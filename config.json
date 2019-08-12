@@ -7,7 +7,7 @@
     "Mysql_TLS": "false",
     "Mysql_MaxOpenConns": 100,
     "Mysql_MaxIdleConns": 10,
-    "V2rayClientAddr": "127.0.0.1:8301",
+    "V2rayClientAddr": "127.0.0.1:31",
     "V2rayTag": "proxy",
     "Email": "@test.com",
     "AlterID": 64,
