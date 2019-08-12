@@ -21,7 +21,7 @@
   },
   "inboundDetour": [{
     "listen": "0.0.0.0",
-    "port": 8301,
+    "port": 31,
     "protocol": "dokodemo-door",
     "settings": {
       "address": "0.0.0.0"
