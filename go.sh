@@ -220,7 +220,7 @@ getVersion(){
             return 3
         elif [[ $RETVAL -ne 0 ]];then
             return 2
-        elif [[ `echo $NEW_VER | cut -d. -f-2` != `echo $CUR_VER | cut -d. -f-2` ]];then
+        elif [[ $NEW_VER != $CUR_VER ]];then
             return 1
         fi
         return 0
@@ -404,7 +404,7 @@ main(){
     [[ "$HELP" == "1" ]] && Help && return
     [[ "$CHECK" == "1" ]] && checkUpdate && return
     [[ "$REMOVE" == "1" ]] && remove && return
-
+    
     sysArch
     # extract local file
     if [[ $LOCAL_INSTALL -eq 1 ]]; then
@@ -430,7 +430,7 @@ main(){
         getVersion
         RETVAL="$?"
         if [[ $RETVAL == 0 ]] && [[ "$FORCE" != "1" ]]; then
-            colorEcho ${BLUE} "Latest version ${NEW_VER} is already installed."
+            colorEcho ${BLUE} "Latest version ${CUR_VER} is already installed."
             if [[ "${ERROR_IF_UPTODATE}" == "1" ]]; then
               return 10
             fi
@@ -444,7 +444,7 @@ main(){
             extract ${ZIPFILE} || return $?
         fi
     fi 
-
+    
     if [[ "${EXTRACT_ONLY}" == "1" ]]; then
         colorEcho ${GREEN} "V2Ray extracted to ${VSRC_ROOT}, and exiting..."
         return 0
